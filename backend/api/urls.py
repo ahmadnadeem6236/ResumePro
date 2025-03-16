@@ -5,7 +5,7 @@ from django.urls import include, path
 from rest_framework import routers
 
 # import everything from views
-from .views import *
+from .views import GeeksViewSet, WorldViewSet
 
 # define the router
 router = routers.DefaultRouter()
