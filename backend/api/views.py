@@ -1,22 +1,23 @@
 # import viewsets
 from rest_framework import viewsets
 
-from .models import GeeksModel
+# import models
+from .models import JobDescription
 
 # import local data
-from .serializers import GeeksSerializer
+from .serializers import JobDescriptionSerializer
 
 # import services
 from .services.pdfuploader import pdfuploader
 
 
 # create a viewset
-class GeeksViewSet(viewsets.ModelViewSet):
+class JobDescriptionViewSet(viewsets.ModelViewSet):
     # define queryset
-    queryset = GeeksModel.objects.all()
+    queryset = JobDescription.objects.all()
 
     # specify serializer to be used
-    serializer_class = GeeksSerializer
+    serializer_class = JobDescriptionSerializer
 
 
 class WorldViewSet(viewsets.ViewSet):

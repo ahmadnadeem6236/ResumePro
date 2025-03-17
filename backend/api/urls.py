@@ -5,13 +5,12 @@ from django.urls import include, path
 from rest_framework import routers
 
 # import everything from views
-from .views import GeeksViewSet, WorldViewSet
+from .views import WorldViewSet
 
 # define the router
 router = routers.DefaultRouter()
 
 # define the router path and viewset to be used
-router.register(r"geeks", GeeksViewSet)
 
 router.register(r"world", WorldViewSet, basename="world")
 
