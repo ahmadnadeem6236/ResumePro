@@ -2,10 +2,10 @@
 from rest_framework import viewsets
 
 # import models
-from .models import JobDescription
+from .models import JobDescription, Resume
 
 # import local data
-from .serializers import JobDescriptionSerializer
+from .serializers import JobDescriptionSerializer, ResumeSerializer
 
 # import services
 from .services.pdfuploader import pdfuploader
@@ -18,6 +18,11 @@ class JobDescriptionViewSet(viewsets.ModelViewSet):
 
     # specify serializer to be used
     serializer_class = JobDescriptionSerializer
+
+
+class ResumeViewSet(viewsets.ModelViewSet):
+    queryset = Resume.objects.all()
+    serializer_class = ResumeSerializer
 
 
 class WorldViewSet(viewsets.ViewSet):
