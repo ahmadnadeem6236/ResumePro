@@ -6,14 +6,14 @@ from .models import JobDescription, Resume
 
 
 # Create a model serializer
-class ResumeSerializer(serializers.HyperlinkedModelSerializer):
+class ResumeSerializer(serializers.ModelSerializer):
     # specify model and fields
     class Meta:
         model = Resume
         fields = "__all__"
 
 
-class JobDescriptionSerializer(serializers.HyperlinkedModelSerializer):
+class JobDescriptionSerializer(serializers.ModelSerializer):
     # specify model and fields
     class Meta:
         model = JobDescription

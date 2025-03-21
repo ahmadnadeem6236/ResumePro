@@ -1,5 +1,7 @@
 # import viewsets
 from rest_framework import viewsets
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 # import models
 from .models import JobDescription, Resume
@@ -8,7 +10,7 @@ from .models import JobDescription, Resume
 from .serializers import JobDescriptionSerializer, ResumeSerializer
 
 # import services
-from .services.pdfuploader import pdfuploader
+from .services.pdf_services import extract_pdf_text
 
 
 # create a viewset
@@ -25,6 +27,11 @@ class ResumeViewSet(viewsets.ModelViewSet):
     serializer_class = ResumeSerializer
 
 
-class WorldViewSet(viewsets.ViewSet):
-    def list(self, request):
-        return pdfuploader()
+@api_view(["GET"])
+def get_resume(request):
+    resume = Resume.objects.first()
+    # serializer = ResumeSerializer(resume)
+    # data = serializer.data
+    pdf = resume.resume.path
+    extracted_text = extract_pdf_text(pdf)
+    return Response({"text": extracted_text.replace("\n", "")})

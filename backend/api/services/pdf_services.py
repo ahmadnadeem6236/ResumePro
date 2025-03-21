@@ -8,7 +8,3 @@ def extract_pdf_text(pdf_path):
             text += page.extract_text() + "\n"
 
     return text.strip()
-
-
-pdf = "media/resume/NadeemAhmad.pdf"
-print(extract_pdf_text(pdf))
